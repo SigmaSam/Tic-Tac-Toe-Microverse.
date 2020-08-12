@@ -1,3 +1,81 @@
-#!/usr/bin/env ruby
+# Variable definition area
 
-puts 'Hello World!'
+i = 0
+board = %w[1 2 3 4 5 6 7 8 9]
+name_pone = nil
+name_ptwo = nil
+
+def display_board(board)
+  puts "#{board[0]} | #{board[1]} | #{board[2]}"
+  puts "---------"
+  puts "#{board[3]} | #{board[4]} | #{board[5]}"
+  puts "---------"
+  puts "#{board[6]} | #{board[7]} | #{board[8]}"
+end
+
+puts display_board(board)
+
+# Begining of the UI
+def welcome_game
+  puts %()
+  puts %(Hello, welcome to Tic Tac Toe)
+  puts %()
+  puts 'Please insert your name Player One: '
+  puts %()
+  name_pone = gets.chomp
+  puts %()
+  puts 'Please insert your name Player Two: '
+  puts %()
+  name_ptwo = gets.chomp
+  puts %()
+  puts "#{name_pone} and #{name_ptwo}, Welcome to Tic Tac Toe"
+  puts %()
+  puts %(Lets Begin)
+  puts %()
+end
+# Game Starts.
+welcome_game
+display_board(board)
+
+while i < 9
+  case i.even?
+  when true
+
+    puts "Is #{name_pone} Turn, please pick a square."
+    i += 1
+    pone_pick = gets.chomp
+    puts %()
+    if board.any?(pone_pick.to_s)
+      x = board.find_index(pone_pick.to_s)
+      board[x] = "X"
+      display_board(board)
+    elsif i == 9
+      puts %()
+      puts 'You are out of moves, GAME OVER'
+    else
+      while board.none?(pone_pick.to_s)
+        puts 'That is not a valid choice, please pick again.'
+        pone_pick = gets.chomp.to_i
+        puts %()
+      end
+    end
+  winner == true ? puts "congrats #{name_pone} WON!" : nil
+  when false
+
+        puts "Is #{name_ptwo} Turn, please pick a square."
+        i += 1
+        ptwo_pick = gets.chomp
+        puts %()
+        if board.any?(ptwo_pick.to_s)
+          x = board.find_index(ptwo_pick.to_s)
+          board[x] = "O"
+          display_board(board)
+        else
+          while board.none?(ptwo_pick.to_s)
+            puts 'That is not a valid choice, please pick again.'
+            ptwo_pick = gets.chomp.to_i
+            puts %()
+          end
+        end
+  end
+end
