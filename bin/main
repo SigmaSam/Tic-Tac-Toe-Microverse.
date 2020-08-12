@@ -38,6 +38,28 @@ end
 welcome_game
 display_board(board)
 
+def winner?(board)
+  if board[0] == board[1] && board[1] == board[2]
+    true
+  elsif board[3] == board[4] && board[5]
+    true
+  elsif board[6] == board[7] && board[8]
+    true
+  elsif board[0] == board[3] && board[6]
+    true
+  elsif board[1] == board[4] && board[7]
+    true
+  elsif board[2] == board[5] && board[8]
+    true
+  elsif board[0] == board[4] && board[8]
+    true
+  elsif board[2] == board[4] && board[6]
+    true
+  else
+    false
+  end
+end
+
 while i < 9
   case i.even?
   when true
@@ -53,6 +75,8 @@ while i < 9
     elsif i == 9
       puts %()
       puts 'You are out of moves, GAME OVER'
+    elsif winner?(board)
+      puts "Player #{name_pone} WINS!"
     else
       while board.none?(pone_pick.to_s)
         puts 'That is not a valid choice, please pick again.'
@@ -60,7 +84,6 @@ while i < 9
         puts %()
       end
     end
-  winner == true ? puts "congrats #{name_pone} WON!" : nil
   when false
 
         puts "Is #{name_ptwo} Turn, please pick a square."
