@@ -2,9 +2,9 @@
 #!/usr/bin/env ruby
 
 board = %w[1 2 3 4 5 6 7 8 9]
-puts "get me the scenario \n"
-player_choose = gets.chomp
-
+i = 0
+name_pone = nil
+name_ptwo = nil
 def display_board(board)
   puts "#{board[0]} | #{board[1]} | #{board[2]}"
   puts "---------"
@@ -13,18 +13,48 @@ def display_board(board)
   puts "#{board[6]} | #{board[7]} | #{board[8]} \n"
 end
 
-if player_choose == "win"
-	puts "player 1 won! \n"
-elsif player_choose == "draw"
-puts "no body won :( \n"
+def input_request(num)
+  if num.even?
+    puts "it's #{@name_pone} turn"
+    board_input = gets.chomp
+  else
+    puts "it's #{@name_ptwo} turn"
+    board_input = gets.chomp
+  end
 end
 
-puts "give a number on the board \n"
-number_board = gets.chomp
-display_board(board)
-if number_board.to_i < 10
-	puts "good job \n"
-elsif number_board.to_i > 10 || number_board.to_i <  0
-	puts "that's not a valid option, try again \n"
-	display_board(board)
+def welcome
+  puts "Welcome to Tic Tac Toe"
+  puts "what's player one's name ?"
+  @name_pone = gets.chomp
+  puts "what's player two's name ?"
+  @name_ptwo = gets.chomp
+  system('cls') || system('clear')
+end
+
+welcome
+
+while i < 9
+  given_number = input_request(i)
+  display_board(board)
+  if given_number.to_i < 10
+  	puts "good job \n\n"
+    i+=1
+  else
+    while given_number.to_i > 10 || given_number.to_i <  0
+    	puts "that's not a valid option, try again \n"
+    	display_board(board)
+      given_number = input_request(i)
+    end
+    i+=1
+    display_board(board)
+  end
+end
+
+puts "get me the scenario \n\n"
+player_choise = gets.chomp
+if player_choise == "win"
+  puts "\nplayer #{@name_pone} won! \n"
+elsif player_choise == "draw"
+puts "no body won :( \n"
 end
