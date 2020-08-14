@@ -40,6 +40,13 @@ while i < 9
   if given_number.to_i < 10
   	puts "good job \n\n"
     i+=1
+    if given_number.to_i == 7
+      puts "you have won!"
+      break
+    elsif given_number.to_i == 8
+      puts "it's a draw"
+      break
+    end
   else
     while given_number.to_i > 10 || given_number.to_i <  0
     	puts "that's not a valid option, try again \n"
@@ -49,12 +56,4 @@ while i < 9
     i+=1
     display_board(board)
   end
-end
-
-puts "get me the scenario \n\n"
-player_choise = gets.chomp
-if player_choise == "win"
-  puts "\nplayer #{@name_pone} won! \n"
-elsif player_choise == "draw"
-puts "no body won :( \n"
 end
