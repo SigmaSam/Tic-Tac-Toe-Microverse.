@@ -1,7 +1,8 @@
 # Variable definition area
 #!/usr/bin/env ruby
 
-board = %w[1 2 3 4 5 6 7 8 9]
+$board = %w[1 2 3 4 5 6 7 8 9]
+
 i = 0
 name_pone = nil
 name_ptwo = nil
@@ -16,9 +17,11 @@ end
 def input_request(num)
   if num.even?
     puts "it's #{@name_pone} turn"
+    display_board($board)
     board_input = gets.chomp
   else
     puts "it's #{@name_ptwo} turn"
+    display_board($board)
     board_input = gets.chomp
   end
 end
@@ -32,14 +35,30 @@ def welcome
   system('cls') || system('clear')
 end
 
+def swap_on_board(i, given_number)
+  while $board.any?(given_number)
+    if i.even?
+      $board[given_number.to_i - 1] = 'X'
+    elsif i.odd?
+      $board[given_number.to_i - 1] = 'O'
+    end
+  end
+  $board
+end
+
+#x = gets.chop
+given_number = "1"
+p $board.none?(given_number)
+#p board.any?(nil)
 welcome
 
 while i < 9
+  #display_board($board)
   given_number = input_request(i)
-  display_board(board)
-  if given_number.to_i < 10
+  if given_number.to_i < 10 && $board.any?(given_number.to_s)
+    swap_on_board(i, given_number)
   	puts "good job \n\n"
-    i+=1
+    #display_board($board)
     if given_number.to_i == 7
       puts "you have won!"
       break
@@ -48,12 +67,13 @@ while i < 9
       break
     end
   else
-    while given_number.to_i > 10 || given_number.to_i <  0
+    while $board.none?(given_number)
     	puts "that's not a valid option, try again \n"
-    	display_board(board)
+    	#display_board($board)
       given_number = input_request(i)
     end
-    i+=1
-    display_board(board)
+    puts "Nice move \n\n"
+    swap_on_board(i, given_number)
   end
+  i+=1
 end
