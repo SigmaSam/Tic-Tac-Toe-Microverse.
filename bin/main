@@ -46,19 +46,13 @@ def swap_on_board(i, given_number)
   $board
 end
 
-#x = gets.chop
-given_number = "1"
-p $board.none?(given_number)
-#p board.any?(nil)
 welcome
 
 while i < 9
-  #display_board($board)
   given_number = input_request(i)
   if given_number.to_i < 10 && $board.any?(given_number.to_s)
     swap_on_board(i, given_number)
   	puts "good job \n\n"
-    #display_board($board)
     if given_number.to_i == 7
       puts "you have won!"
       break
