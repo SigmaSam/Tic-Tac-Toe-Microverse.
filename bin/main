@@ -1,3 +1,73 @@
+# Variable definition area
 #!/usr/bin/env ruby
 
-puts 'Hello World!'
+$board = %w[1 2 3 4 5 6 7 8 9]
+
+i = 0
+name_pone = nil
+name_ptwo = nil
+def display_board(board)
+  puts "#{board[0]} | #{board[1]} | #{board[2]}"
+  puts "---------"
+  puts "#{board[3]} | #{board[4]} | #{board[5]}"
+  puts "---------"
+  puts "#{board[6]} | #{board[7]} | #{board[8]} \n"
+end
+
+def input_request(num)
+  if num.even?
+    puts "it's #{@name_pone} turn"
+    display_board($board)
+    board_input = gets.chomp
+  else
+    puts "it's #{@name_ptwo} turn"
+    display_board($board)
+    board_input = gets.chomp
+  end
+end
+
+def welcome
+  puts "Welcome to Tic Tac Toe"
+  puts "what's player one's name ?"
+  @name_pone = gets.chomp
+  puts "what's player two's name ?"
+  @name_ptwo = gets.chomp
+  system('cls') || system('clear')
+end
+
+def swap_on_board(i, given_number)
+  while $board.any?(given_number)
+    if i.even?
+      $board[given_number.to_i - 1] = 'X'
+    elsif i.odd?
+      $board[given_number.to_i - 1] = 'O'
+    end
+  end
+  $board
+end
+
+welcome
+
+while i < 9
+  given_number = input_request(i)
+  if given_number.to_i < 10 && $board.any?(given_number.to_s)
+    swap_on_board(i, given_number)
+  	puts "good job \n\n"
+    if given_number.to_i == 7
+      puts "you have won!"
+      break
+    elsif given_number.to_i == 8
+      puts "it's a draw"
+      break
+    end
+  else
+    while $board.none?(given_number)
+    	puts "that's not a valid option, try again \n"
+    	#display_board($board)
+      given_number = input_request(i)
+    end
+    puts "Nice move \n\n"
+    swap_on_board(i, given_number)
+  end
+  i+=1
+end
