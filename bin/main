@@ -46,6 +46,28 @@ def swap_on_board(i, given_number)
   $board
 end
 
+def winner?(board)                    # Check if there is a winner.
+  if board[0] == board[1] && board[1] == board[2] # Horizontal Top
+    true
+  elsif board[3] == board[4] && board[3] == board[5] # Horizontal Middle
+    true
+  elsif board[6] == board[7] && board[6] == board[8] # Horizontal Bottom
+    true
+  elsif board[0] == board[3] && board[0] == board[6] # Vertical Left
+    true
+  elsif board[1] == board[4] && board[1] == board[7] # Vertical Middle
+    true
+  elsif board[2] == board[5] && board[2] == board[8] # Vertical Right
+    true
+  elsif board[0] == board[4] && board[0] == board[8] # Diagonal Left
+    true
+  elsif board[2] == board[4] && board[2] == board[6] # Diagonal Right
+    true
+  else
+    false
+  end
+end
+
 welcome
 
 while i < 9
@@ -53,12 +75,10 @@ while i < 9
   if given_number.to_i < 10 && $board.any?(given_number.to_s)
     swap_on_board(i, given_number)
   	puts "good job \n\n"
-    if given_number.to_i == 7
-      puts "you have won!"
-      break
-    elsif given_number.to_i == 8
-      puts "it's a draw"
-      break
+    if i==8
+      system('cls') || system('clear')
+      display_board($board)
+      puts "\nIt's a draw there are no more moves"
     end
   else
     while $board.none?(given_number)
@@ -68,6 +88,16 @@ while i < 9
     end
     puts "Nice move \n\n"
     swap_on_board(i, given_number)
+  end
+  if winner?($board)
+    system('cls') || system('clear')
+    display_board($board)
+    if i.even?
+      puts "The winner is #{@name_pone}"
+    else
+      puts "The winner is #{@name_ptwo}"
+    end
+    break
   end
   i+=1
 end
