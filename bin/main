@@ -46,22 +46,22 @@ def swap_on_board(i, given_number)
   $board
 end
 
-def winner?(board)                    # Check if there is a winner.
-  if board[0] == board[1] && board[1] == board[2] # Horizontal Top
+def winner?(board)
+  if board[0] == board[1] && board[1] == board[2]
     true
-  elsif board[3] == board[4] && board[3] == board[5] # Horizontal Middle
+  elsif board[3] == board[4] && board[3] == board[5]
     true
-  elsif board[6] == board[7] && board[6] == board[8] # Horizontal Bottom
+  elsif board[6] == board[7] && board[6] == board[8]
     true
-  elsif board[0] == board[3] && board[0] == board[6] # Vertical Left
+  elsif board[0] == board[3] && board[0] == board[6]
     true
-  elsif board[1] == board[4] && board[1] == board[7] # Vertical Middle
+  elsif board[1] == board[4] && board[1] == board[7]
     true
-  elsif board[2] == board[5] && board[2] == board[8] # Vertical Right
+  elsif board[2] == board[5] && board[2] == board[8]
     true
-  elsif board[0] == board[4] && board[0] == board[8] # Diagonal Left
+  elsif board[0] == board[4] && board[0] == board[8]
     true
-  elsif board[2] == board[4] && board[2] == board[6] # Diagonal Right
+  elsif board[2] == board[4] && board[2] == board[6]
     true
   else
     false
@@ -83,7 +83,6 @@ while i < 9
   else
     while $board.none?(given_number)
     	puts "that's not a valid option, try again \n"
-    	#display_board($board)
       given_number = input_request(i)
     end
     puts "Nice move \n\n"
