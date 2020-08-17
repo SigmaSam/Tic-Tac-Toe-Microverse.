@@ -17,6 +17,9 @@ puts "what's player two's name ?"
 player2_name = gets.chomp
 players = Players.new(player1_name, player2_name)
 
+
+
+
 class Interface
   def display_board(board)
     puts "#{board[0]} | #{board[1]} | #{board[2]}"
@@ -25,24 +28,11 @@ class Interface
     puts '---------'
     puts "#{board[6]} | #{board[7]} | #{board[8]} \n"
   end
-
-  def input_request(num, player1_name, player2_name, board)
-    if num.even?
-      puts "it's #{player1_name} turn"
-    else
-      puts "it's #{player2_name} turn"
-    end
-    display_board(board)
-    board_input = gets.chomp
-    board_input.to_i
-  end
 end
 
 interface = Interface.new
 
 itr = 0
-
-p board.winner?(4)
 
 while flag
   given_number = interface.input_request(itr, players.player1, players.player2, board.board)
@@ -62,9 +52,10 @@ while flag
     end
     puts "Nice move \n\n"
     board.swap_on_board(itr, given_number)
+    puts board_array
   end
   if board.winner?(itr)
-    system('cls') || system('clear')
+    # system('cls') || system('clear')
     interface.display_board(board.board)
     if itr.even?
       puts "The winner is #{players.player1}"
