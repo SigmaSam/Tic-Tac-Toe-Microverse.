@@ -1,12 +1,12 @@
-class Player
+class Players
+  attr_writer :player1
+  attr_writer :player2
+  attr_reader :player1
+  attr_reader :player2
 
-  def welcome
-    puts "Welcome to Tic Tac Toe"
-    puts "what's player one's name ?"
-    @name_pone = gets.chomp
-    puts "what's player two's name ?"
-    @name_ptwo = gets.chomp
-    system('cls') || system('clear')
+  def initialize(player1, player2)
+    @player1 = player1
+    @player2 = player2
   end
-  
+
 end

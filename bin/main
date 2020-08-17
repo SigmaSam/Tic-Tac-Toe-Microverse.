@@ -1,41 +1,73 @@
 #!/usr/bin/env ruby
 # Variable definition area
 require_relative '../lib/board.rb'
-require_relative '../lib/player.rb'
+require_relative '../lib/players.rb'
 
-$board = %w[1 2 3 4 5 6 7 8 9]
+board_array = %w[1 2 3 4 5 6 7 8 9]
+board = Board.new(board_array)
+
+puts "Welcome to Tic Tac Toe"
+puts "what's player one's name ?"
+
+player1_name = gets.chomp
+puts "what's player two's name ?"
+
+player2_name = gets.chomp
+players = Players.new(player1_name, player2_name)
+
+class Interface
+
+  def display_board(board)
+    puts "#{board[0]} | #{board[1]} | #{board[2]}"
+    puts "---------"
+    puts "#{board[3]} | #{board[4]} | #{board[5]}"
+    puts "---------"
+    puts "#{board[6]} | #{board[7]} | #{board[8]} \n"
+  end
+
+  def input_request(num, player1_name, player2_name,board)
+    if num.even?
+      puts "it's #{player1_name} turn"
+      display_board(board)
+      board_input = gets.chomp
+    else
+      puts "it's #{player2_name} turn"
+      display_board(board)
+      board_input = gets.chomp
+    end
+  end
+
+end
+
+interface = Interface.new
 
 i = 0
-name_pone = nil
-name_ptwo = nil
-
-welcome
 
 while i < 9
-  given_number = input_request(i)
-  if given_number.to_i < 10 && $board.any?(given_number.to_s)
-    swap_on_board(i, given_number)
+  given_number = interface.input_request(i, players.player1, players.player2, board.board)
+  if given_number.to_i < 10 && board.board.any?(given_number.to_s)
+    board.swap_on_board(i, given_number)
   	puts "good job \n\n"
     if i==8
       system('cls') || system('clear')
-      display_board($board)
+      interface.display_board(board.board)
       puts "\nIt's a draw there are no more moves"
     end
   else
-    while $board.none?(given_number)
+    while board.board.none?(given_number)
     	puts "that's not a valid option, try again \n"
-      given_number = input_request(i)
+      given_number = interface.input_request(i, players.player1, players.player2, board.board)
     end
     puts "Nice move \n\n"
-    swap_on_board(i, given_number)
+    board.swap_on_board(i, given_number)
   end
-  if winner?($board)
+  if board.winner?(board.board)
     system('cls') || system('clear')
-    display_board($board)
+    interface.display_board(board.board)
     if i.even?
-      puts "The winner is #{@name_pone}"
+      puts "The winner is #{players.player1}"
     else
-      puts "The winner is #{@name_ptwo}"
+      puts "The winner is #{players.payer2}"
     end
     break
   end

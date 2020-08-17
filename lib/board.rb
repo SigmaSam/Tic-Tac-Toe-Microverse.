@@ -1,45 +1,21 @@
+
 class Board
-  def display_board(board)
-    puts "#{board[0]} | #{board[1]} | #{board[2]}"
-    puts "---------"
-    puts "#{board[3]} | #{board[4]} | #{board[5]}"
-    puts "---------"
-    puts "#{board[6]} | #{board[7]} | #{board[8]} \n"
-  end
 
-  def input_request(num)
-    if num.even?
-      puts "it's #{@name_pone} turn"
-      display_board($board)
-      board_input = gets.chomp
-    else
-      puts "it's #{@name_ptwo} turn"
-      display_board($board)
-      board_input = gets.chomp
-    end
-  end
+attr_reader :board
 
-  def input_request(num)
-    if num.even?
-      puts "it's #{@name_pone} turn"
-      display_board($board)
-      board_input = gets.chomp
-    else
-      puts "it's #{@name_ptwo} turn"
-      display_board($board)
-      board_input = gets.chomp
-    end
-  end
+def initialize(board)
+  @board = board
+end
 
   def swap_on_board(i, given_number)
-    while $board.any?(given_number)
+    while board.any?(given_number)
       if i.even?
-        $board[given_number.to_i - 1] = 'X'
+        board[given_number.to_i - 1] = 'X'
       elsif i.odd?
-        $board[given_number.to_i - 1] = 'O'
+        board[given_number.to_i - 1] = 'O'
       end
     end
-    $board
+    board
   end
 
   def winner?(board)
@@ -63,5 +39,5 @@ class Board
       false
     end
   end
-  
+
 end
