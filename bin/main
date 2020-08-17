@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-# rubocop: disable Style/Documentation
 # Variable definition area
 require_relative '../lib/board.rb'
 require_relative '../lib/players.rb'
@@ -73,4 +72,3 @@ while itr < 9
   itr += 1
 end
 
-# rubocop: enable Style/Documentation

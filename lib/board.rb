@@ -1,5 +1,3 @@
-# rubocop: disable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/MethodLength, Style/Documentation, Style/FrozenStringLiteralComment
-
 class Board
   attr_reader :board
   def initialize(board)
@@ -39,5 +37,3 @@ class Board
     end
   end
 end
-
-# rubocop: enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/MethodLength, Style/Documentation, Style/FrozenStringLiteralComment
