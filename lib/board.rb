@@ -1,17 +1,16 @@
+# rubocop: disable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/MethodLength, Style/Documentation, Style/FrozenStringLiteralComment
 
 class Board
+  attr_reader :board
+  def initialize(board)
+    @board = board
+  end
 
-attr_reader :board
-
-def initialize(board)
-  @board = board
-end
-
-  def swap_on_board(i, given_number)
+  def swap_on_board(itr, given_number)
     while board.any?(given_number)
-      if i.even?
+      if itr.even?
         board[given_number.to_i - 1] = 'X'
-      elsif i.odd?
+      elsif itr.odd?
         board[given_number.to_i - 1] = 'O'
       end
     end
@@ -39,5 +38,6 @@ end
       false
     end
   end
-
 end
+
+# rubocop: enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/AbcSize, Metrics/MethodLength, Style/Documentation, Style/FrozenStringLiteralComment
