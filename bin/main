@@ -4,7 +4,8 @@
 require_relative '../lib/board.rb'
 require_relative '../lib/players.rb'
 
-board_array = %w[1 2 3 4 5 6 7 8 9]
+flag = true
+board_array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 board = Board.new(board_array)
 
 puts 'Welcome to Tic Tac Toe'
@@ -33,7 +34,7 @@ class Interface
     end
     display_board(board)
     board_input = gets.chomp
-    board_input
+    board_input.to_i
   end
 end
 
@@ -41,15 +42,18 @@ interface = Interface.new
 
 itr = 0
 
-while itr < 9
+p board.winner?(4)
+
+while flag
   given_number = interface.input_request(itr, players.player1, players.player2, board.board)
-  if given_number.to_i < 10 && board.board.any?(given_number.to_s)
+  if given_number < 10 && board.board.any?(given_number)
     board.swap_on_board(itr, given_number)
     puts "good job \n\n"
-    if itr == 8
+    if board.draw? && !board.winner?(itr)
       system('cls') || system('clear')
       interface.display_board(board.board)
       puts "\nIt's a draw there are no more moves"
+      flag = false
     end
   else
     while board.board.none?(given_number)
@@ -59,7 +63,7 @@ while itr < 9
     puts "Nice move \n\n"
     board.swap_on_board(itr, given_number)
   end
-  if board.winner?(board.board)
+  if board.winner?(itr)
     system('cls') || system('clear')
     interface.display_board(board.board)
     if itr.even?

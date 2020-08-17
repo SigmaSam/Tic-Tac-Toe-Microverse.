@@ -1,5 +1,3 @@
-# rubocop: disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
-
 class Board
   attr_reader :board
   def initialize(board)
@@ -17,27 +15,28 @@ class Board
     board
   end
 
-  def winner?(board)
-    if board[0] == board[1] && board[1] == board[2]
-      true
-    elsif board[3] == board[4] && board[3] == board[5]
-      true
-    elsif board[6] == board[7] && board[6] == board[8]
-      true
-    elsif board[0] == board[3] && board[0] == board[6]
-      true
-    elsif board[1] == board[4] && board[1] == board[7]
-      true
-    elsif board[2] == board[5] && board[2] == board[8]
-      true
-    elsif board[0] == board[4] && board[0] == board[8]
-      true
-    elsif board[2] == board[4] && board[2] == board[6]
-      true
+  def draw?
+   (board.count('X') + board.count('O')) == 9 ? true : false
+  end
+
+  # New Pseudo-Function.
+
+  def winner?(itr)
+    arr = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+    win = %w[ X X X ]
+    win = %w[ O O O ]
+
+    if itr.even?
+      win = %w[ X X X ]
     else
-      false
+      win = %w[ O O O ]
+    end
+
+    if arr.each do |i|
+
+
+    
+    
     end
   end
 end
-
-# rubocop: enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
