@@ -3,6 +3,7 @@ class Board
   def initialize(board)
     @board = board
     @winner = false
+    @win_arr = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
   end
 
   def swap_on_board(itr, given_number)
@@ -17,20 +18,15 @@ class Board
   end
 
   def draw?
-    if board.count('X') + board.count('O') == 9
-      true
-    else
-      false
-    end
+    board.count('X') + board.count('O') == 9
   end
 
   def winner?(itr)
-    win_arr = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
-    if itr.even?
-      sign = 'X'
-    else
-      sign = 'O'
-    end
+    sign = if itr.even?
+             'X'
+           else
+             'O'
+           end
     win_arr.each do |arr|
       @winner = arr.all? { |index| board[index] == sign } ? true : false
       return true if @winner
