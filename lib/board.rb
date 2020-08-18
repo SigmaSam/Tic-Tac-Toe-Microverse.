@@ -27,7 +27,7 @@ class Board
            else
              'O'
            end
-    win_arr.each do |arr|
+    @win_arr.each do |arr|
       @winner = arr.all? { |index| board[index] == sign } ? true : false
       return true if @winner
     end
