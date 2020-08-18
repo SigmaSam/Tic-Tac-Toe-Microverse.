@@ -17,9 +17,6 @@ puts "what's player two's name ?"
 player2_name = gets.chomp
 players = Players.new(player1_name, player2_name)
 
-
-
-
 class Interface
   def display_board(board)
     puts "#{board[0]} | #{board[1]} | #{board[2]}"
