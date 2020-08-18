@@ -35,9 +35,12 @@ interface = Interface.new
 itr = 0
 
 while flag
-  given_number = interface.input_request(itr, players.player1, players.player2, board.board)
-  if given_number < 10 && board.board.any?(given_number)
-    board.swap_on_board(itr, given_number)
+  players_name = players.get_name(itr)
+  interface.display_board(board.board)
+  puts "It's #{players_name} turn."
+  given_number = gets.chomp
+  if given_number.to_i < 10 && board.board.any?(given_number.to_i)
+    board.swap_on_board(itr, given_number.to_i)
     puts "good job \n\n"
     if board.draw? && !board.winner?(itr)
       system('cls') || system('clear')
@@ -46,22 +49,22 @@ while flag
       flag = false
     end
   else
-    while board.board.none?(given_number)
+    while board.board.none?(given_number.to_i)
       puts "that's not a valid option, try again \n"
-      given_number = interface.input_request(itr, players.player1, players.player2, board.board)
+      players_name = players.get_name(itr)
+      puts "It's #{players_name} turn."
+      given_number = gets.chomp
+      system('cls') || system('clear')
+      interface.display_board(board.board)
     end
+    system('cls') || system('clear')
     puts "Nice move \n\n"
-    board.swap_on_board(itr, given_number)
-    puts board_array
+    board.swap_on_board(itr, given_number.to_i)
   end
   if board.winner?(itr)
-    # system('cls') || system('clear')
     interface.display_board(board.board)
-    if itr.even?
-      puts "The winner is #{players.player1}"
-    else
-      puts "The winner is #{players.payer2}"
-    end
+    players_name = players.get_name(itr)
+    puts "#{players_name} is the winner"
     break
   end
   itr += 1

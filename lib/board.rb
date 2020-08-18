@@ -5,17 +5,6 @@ class Board
     @winner = false
   end
 
-  def input_request(num, player1_name, player2_name, board)
-    if num.even?
-      puts "it's #{player1_name} turn"
-    else
-      puts "it's #{player2_name} turn"
-    end
-    display_board(board)
-    board_input = gets.chomp
-    board_input.to_i
-  end
-
   def swap_on_board(itr, given_number)
     while board.any?(given_number)
       if itr.even?
@@ -33,7 +22,7 @@ class Board
 
   def winner?(itr)
     win_arr = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
-    itr.even? ?  sign = "X" : sign = "O"    
+    itr.even? ?  sign = "X" : sign = "O"
     win_arr.each do |arr|
       @winner = arr.all? { |index| board[index] == sign } ? true : false
       return true if @winner

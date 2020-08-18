@@ -8,4 +8,12 @@ class Players
     @player1 = player1
     @player2 = player2
   end
+
+  def get_name(num)
+    if num.even?
+      player1
+    else
+      player2
+    end
+  end
 end
