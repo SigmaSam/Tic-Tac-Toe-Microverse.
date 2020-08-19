@@ -26,7 +26,7 @@ This project was dived into 4 different milestones each one intended to make us 
 
 ## Steps for you to play our game:
 - Clone this repository by opening your terminal and run:
-  git clone https://github.com/SigmaSam/Tic-Tac-Toe-Microverse..git
+  git [clone] (https://github.com/SigmaSam/Tic-Tac-Toe-Microverse..git)
 - Then run move to where the main is located by running:
   `cd ..Tic-Tac-Toe-Microverse/bin`
 - Finally just run the main file using:
@@ -42,7 +42,7 @@ This project was dived into 4 different milestones each one intended to make us 
 - Github: [@balerum03](https://github.com/balerum03)
 
 ## Contributing
-Bug reports and pull requests are welcome on GitHub at https://github.com/SigmaSam/Tic-Tac-Toe-Microverse.
+Bug reports and pull requests are welcome on GitHub at [this] (https://github.com/SigmaSam/Tic-Tac-Toe-Microverse.)
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
