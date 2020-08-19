@@ -6,7 +6,7 @@ This project was dived into 4 different milestones each one intended to make us 
 <img src="./media/capture1.PNG"/>
 <img src="./media/capture2.PNG"/>
 <img src="./media/capture3.PNG"/>
-<img src="./media/capture.PNG"/>
+<img src="./media/capture4.PNG"/>
 ## Built with:
 - Ruby
 - Rubocop
