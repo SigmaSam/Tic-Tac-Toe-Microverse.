@@ -3,8 +3,8 @@ require_relative '../lib/board.rb'
 require_relative '../lib/players.rb'
 
 describe Interface do
-  let(:interface) {Interface.new}
-  let(:test_array){ %w[1 2 3 4 5 6 7 8 9] }
+  let(:interface) { Interface.new }
+  let(:test_array) { %w[1 2 3 4 5 6 7 8 9] }
   it 'displays the board' do
     expect(interface.display_board(test_array).class).to eql(String)
   end
@@ -19,7 +19,7 @@ end
 
 describe Board do
   let(:board_obj) { Board.new(%w[1 2 3 4 5 6 7 8 9]) }
-  it 'Changes the possition given for "O" '  do
+  it 'Changes the possition given for "O" ' do
     expect(board_obj.swap_on_board(5, 9)).to eql(board_obj.board)
   end
 end
