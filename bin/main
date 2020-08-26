@@ -24,7 +24,7 @@ itr = 0
 
 while flag
   players_name = players.get_name(itr)
-  interface.display_board(board.board)
+  puts interface.display_board(board.board)
   puts "It's #{players_name} turn."
   given_number = gets.chomp
   if given_number.to_i < 10 && board.board.any?(given_number.to_i)
@@ -32,7 +32,7 @@ while flag
     puts "good job \n\n"
     if board.draw? && !board.winner?(itr)
       system('cls') || system('clear')
-      interface.display_board(board.board)
+      puts interface.display_board(board.board)
       puts "\nIt's a draw there are no more moves"
       flag = false
     end
@@ -43,14 +43,14 @@ while flag
       puts "It's #{players_name} turn."
       given_number = gets.chomp
       system('cls') || system('clear')
-      interface.display_board(board.board)
+      puts interface.display_board(board.board)
     end
     system('cls') || system('clear')
     puts "Nice move \n\n"
     board.swap_on_board(itr, given_number.to_i)
   end
   if board.winner?(itr)
-    interface.display_board(board.board)
+    puts interface.display_board(board.board)
     players_name = players.get_name(itr)
     puts "#{players_name} is the winner"
     break

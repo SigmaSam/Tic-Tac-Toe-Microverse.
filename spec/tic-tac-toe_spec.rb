@@ -6,7 +6,7 @@ describe Interface do
   let(:interface){Interface.new}
   let(:test_array){%w[1 2 3 4 5 6 7 8 9]}
   it "displays the board" do
-    expect(interface.display_board(test_array)).to eql(nil)
+    expect(interface.display_board(test_array).class).to eql(String)
   end
 end
 
