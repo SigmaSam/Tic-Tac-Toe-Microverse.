@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 # Variable definition area
+require_relative '../lib/interface.rb'
 require_relative '../lib/board.rb'
 require_relative '../lib/players.rb'
 
@@ -16,16 +17,6 @@ puts "what's player two's name ?"
 
 player2_name = gets.chomp
 players = Players.new(player1_name, player2_name)
-
-class Interface
-  def display_board(board)
-    puts "#{board[0]} | #{board[1]} | #{board[2]}"
-    puts '---------'
-    puts "#{board[3]} | #{board[4]} | #{board[5]}"
-    puts '---------'
-    puts "#{board[6]} | #{board[7]} | #{board[8]} \n"
-  end
-end
 
 interface = Interface.new
 
