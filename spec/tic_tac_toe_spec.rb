@@ -36,7 +36,7 @@ describe Board do
   # Negative scenario were it gives you an error when a wrong argument is given
   let(:board_obj5) { Board.new(%w[X O X O X O x 8 9]) }
   it 'Gives you an error when the wrong argument is received' do
-    expect{ board_obj5.winner?('a') }.to raise_error(NoMethodError)
+    expect { board_obj5.winner?('a') }.to raise_error(NoMethodError)
   end
 
   let(:board_obj3) { Board.new(%w[X O X X O X O X O]) }
@@ -62,7 +62,7 @@ describe Players do
       end
       # Negative scenario using a string as parameter
       it 'Gives You an Error when the parameter is not a number' do
-        expect{ player_name.get_name('a') }.to raise_error(NoMethodError)
+        expect { player_name.get_name('a') }.to raise_error(NoMethodError)
       end
     end
   end
