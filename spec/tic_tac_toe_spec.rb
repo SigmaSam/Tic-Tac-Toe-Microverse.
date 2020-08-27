@@ -19,7 +19,7 @@ describe Board do
   it 'Changes the possition given for "O" ' do
     expect(board_obj.swap_on_board(5, 9)).to eql(board_obj.board)
   end
-#Negative scenario
+  # Negative scenario
   it 'Does not changes the position when wrong argument is given' do
     expect(board_obj.swap_on_board(5, 'a')).to eql(board_obj.board)
   end
@@ -33,7 +33,7 @@ describe Board do
   it 'Returns True when there is a winner otherwise it returns False' do
     expect(board_obj2.winner?(0)).to eql(false)
   end
-#Negative scenario were it returns false and there is a winner
+  # Negative scenario were it returns false and there is a winner
   let(:board_obj5) { Board.new(%w[X O X O X O x 8 9]) }
   it 'Returns True when there is a winner otherwise it returns False' do
     expect(board_obj5.winner?(0)).to eql(false)
@@ -43,7 +43,7 @@ describe Board do
   it 'Returns true when the array has no integers left on it' do
     expect(board_obj3.draw?).to eql(true)
   end
-#Negative scenario base on the elements the array has.
+  # Negative scenario base on the elements the array has.
   let(:board_obj4) { Board.new(%w[X O X X O X O X o]) }
   it 'Returns false when the array has no integers left on it' do
     expect(board_obj4.draw?).to eql(false)
@@ -60,11 +60,10 @@ describe Players do
       it 'Returns the name of the player' do
         expect(player_name.get_name(1)).to eql('Sam')
       end
-#Negative scenario(concider that the argument is never gonna be more than 9 so this would not happened)
+      # Negative scenario(concider that the argument is never gonna be more than 9 so this would not happened)
       it 'Returns false when the argument is not a number' do
         expect(player_name.get_name(10)).to eql('Adan')
       end
     end
-
   end
 end
