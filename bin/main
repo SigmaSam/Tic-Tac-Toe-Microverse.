@@ -21,7 +21,7 @@ players = Players.new(player1_name, player2_name)
 interface = Interface.new
 
 itr = 0
-
+p players.get_name('a')
 while flag
   players_name = players.get_name(itr)
   puts interface.display_board(board.board)
