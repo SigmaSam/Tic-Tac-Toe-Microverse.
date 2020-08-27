@@ -33,6 +33,11 @@ This project was dived into 4 different milestones each one intended to make us 
   `ruby main`
 - Enjoy out Tic Tac Toe made with Ruby.
 
+## Steps to validate code using out Rspec file
+- Once you have clone the repository make sure that you have Rspec install by running rspec --version
+- If you do not have Rspec installed do so by following the Instructions [here](https://medium.com/@amliving/my-rails-rspec-set-up-6451269847f9)
+- Then move to the directory spec and run this comand 'rspec tic_tac_toe_spec.rb'
+
 ## Authors
 
 👤 **Samuel Almao**
